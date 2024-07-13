@@ -23,8 +23,8 @@ mongoose.connect(process.env.MOGO_URI)
 
 // middleware
 app.set("view engine","ejs");
-  
-
+  app.use(express.urlencoded({extended:true}))
+  app.use(express.json) //body parsing in json format
 //API'S
 app.get('/',(req,res)=>{
 
@@ -34,6 +34,16 @@ app.get('/',(req,res)=>{
 //REGISTER PAGE
 app.get('/register',(req,res)=>{
     return res.render("registerpage")
+})
+
+app.post('/register',(req,res)=>{
+    const {name,email,username,password}=req.body;
+    //data validation
+    //email and username shoud be unique
+    //encrypt the password
+    // store with in db
+    console.log(req.body);
+    return res.send("user register sucessfully");
 })
 //lOGINPAGE
 app.get("/login",(req,res)=>{

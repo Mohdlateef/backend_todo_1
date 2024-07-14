@@ -24,3 +24,11 @@ const userSchema=new mongoose.Schema({
         
     }
 })
+
+
+
+// const userModel=mongoose.model("user",userSchema);
+
+
+// ** another way of improting things is like this **//
+module.exports=mongoose.model("user",userSchema);
